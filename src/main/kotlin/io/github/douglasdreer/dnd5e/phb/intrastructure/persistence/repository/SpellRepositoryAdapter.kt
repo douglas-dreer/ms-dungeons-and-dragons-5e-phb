@@ -25,8 +25,8 @@ class SpellRepositoryAdapter(
         return repository.findAll(pageable).map { it.toDomain() }
     }
 
-    override fun findById(id: Long): Spell? {
-        return repository.findByIdOrNull(id)?.toDomain()
+    override fun findById(spellId: Long): Spell? {
+        return repository.findByIdOrNull(spellId)?.toDomain()
     }
 
     override fun findBySlug(slug: String): Spell? {

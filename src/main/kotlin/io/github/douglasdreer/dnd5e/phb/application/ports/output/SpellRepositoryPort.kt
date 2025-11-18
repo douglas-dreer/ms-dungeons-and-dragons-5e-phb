@@ -6,6 +6,6 @@ import org.springframework.data.domain.Page
 interface SpellRepositoryPort {
     fun save(spell: Spell): Spell
     fun findAll(page: Int, size: Int): Page<Spell>
-    fun findById(id: Long): Spell?
+    fun findById(spellId: Long): Spell?
     fun findBySlug(slug: String): Spell?
 }
