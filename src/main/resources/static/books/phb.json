@@ -1,0 +1,273 @@
+{
+  "code": "phb",
+  "name": "Player's Handbook 2024",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0,
+    "releaseDate": "2024-09-17",
+    "changelog": "Initial release of Player's Handbook 2024"
+  },
+  "metadata": {
+    "description": "Core rulebook for players containing character creation rules, classes, spells, and equipment",
+    "publisher": "Wizards of the Coast",
+    "releaseYear": 2024,
+    "dependencies": []
+  },
+  "tables": [
+    {
+      "name": "races",
+      "schema": "phb",
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR2(36)",
+          "nullable": false,
+          "constraints": ["PRIMARY KEY"]
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR2(100)",
+          "nullable": false
+        },
+        {
+          "name": "size",
+          "type": "VARCHAR2(20)",
+          "nullable": false
+        },
+        {
+          "name": "speed",
+          "type": "NUMBER(3)",
+          "nullable": false
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "defaultValue": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "defaultValue": "CURRENT_TIMESTAMP"
+        }
+      ],
+      "primaryKey": ["id"],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "name": "idx_race_name",
+          "columns": ["name"],
+          "unique": false
+        }
+      ]
+    },
+    {
+      "name": "classes",
+      "schema": "phb",
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR2(36)",
+          "nullable": false,
+          "constraints": ["PRIMARY KEY"]
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR2(100)",
+          "nullable": false
+        },
+        {
+          "name": "hit_die",
+          "type": "NUMBER(2)",
+          "nullable": false
+        },
+        {
+          "name": "primary_ability",
+          "type": "VARCHAR2(50)",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "defaultValue": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "defaultValue": "CURRENT_TIMESTAMP"
+        }
+      ],
+      "primaryKey": ["id"],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "name": "idx_class_name",
+          "columns": ["name"],
+          "unique": false
+        }
+      ]
+    },
+    {
+      "name": "spells",
+      "schema": "phb",
+      "columns": [
+        {
+          "name": "id",
+          "type": "VARCHAR2(36)",
+          "nullable": false,
+          "constraints": ["PRIMARY KEY"]
+        },
+        {
+          "name": "name",
+          "type": "VARCHAR2(100)",
+          "nullable": false
+        },
+        {
+          "name": "level",
+          "type": "NUMBER(1)",
+          "nullable": false
+        },
+        {
+          "name": "school",
+          "type": "VARCHAR2(50)",
+          "nullable": false
+        },
+        {
+          "name": "casting_time",
+          "type": "VARCHAR2(100)",
+          "nullable": true
+        },
+        {
+          "name": "range_value",
+          "type": "VARCHAR2(50)",
+          "nullable": true
+        },
+        {
+          "name": "components",
+          "type": "VARCHAR2(20)",
+          "nullable": true
+        },
+        {
+          "name": "duration",
+          "type": "VARCHAR2(100)",
+          "nullable": true
+        },
+        {
+          "name": "description",
+          "type": "CLOB",
+          "nullable": true
+        },
+        {
+          "name": "created_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "defaultValue": "CURRENT_TIMESTAMP"
+        },
+        {
+          "name": "updated_at",
+          "type": "TIMESTAMP",
+          "nullable": false,
+          "defaultValue": "CURRENT_TIMESTAMP"
+        }
+      ],
+      "primaryKey": ["id"],
+      "foreignKeys": [],
+      "indexes": [
+        {
+          "name": "idx_spell_name",
+          "columns": ["name"],
+          "unique": false
+        },
+        {
+          "name": "idx_spell_level",
+          "columns": ["level"],
+          "unique": false
+        },
+        {
+          "name": "idx_spell_school",
+          "columns": ["school"],
+          "unique": false
+        }
+      ]
+    }
+  ],
+  "data": [
+    {
+      "table": "phb.races",
+      "rows": [
+        {
+          "id": "550e8400-e29b-41d4-a716-446655440001",
+          "name": "Human",
+          "size": "Medium",
+          "speed": 30
+        },
+        {
+          "id": "550e8400-e29b-41d4-a716-446655440002",
+          "name": "Elf",
+          "size": "Medium",
+          "speed": 30
+        },
+        {
+          "id": "550e8400-e29b-41d4-a716-446655440003",
+          "name": "Dwarf",
+          "size": "Medium",
+          "speed": 25
+        }
+      ]
+    },
+    {
+      "table": "phb.classes",
+      "rows": [
+        {
+          "id": "660e8400-e29b-41d4-a716-446655440001",
+          "name": "Fighter",
+          "hit_die": 10,
+          "primary_ability": "Strength or Dexterity"
+        },
+        {
+          "id": "660e8400-e29b-41d4-a716-446655440002",
+          "name": "Wizard",
+          "hit_die": 6,
+          "primary_ability": "Intelligence"
+        },
+        {
+          "id": "660e8400-e29b-41d4-a716-446655440003",
+          "name": "Cleric",
+          "hit_die": 8,
+          "primary_ability": "Wisdom"
+        }
+      ]
+    },
+    {
+      "table": "phb.spells",
+      "rows": [
+        {
+          "id": "770e8400-e29b-41d4-a716-446655440001",
+          "name": "Fireball",
+          "level": 3,
+          "school": "Evocation",
+          "casting_time": "1 action",
+          "range_value": "150 feet",
+          "components": "V, S, M",
+          "duration": "Instantaneous",
+          "description": "A bright streak flashes from your pointing finger to a point you choose within range and then blossoms with a low roar into an explosion of flame."
+        },
+        {
+          "id": "770e8400-e29b-41d4-a716-446655440002",
+          "name": "Magic Missile",
+          "level": 1,
+          "school": "Evocation",
+          "casting_time": "1 action",
+          "range_value": "120 feet",
+          "components": "V, S",
+          "duration": "Instantaneous",
+          "description": "You create three glowing darts of magical force. Each dart hits a creature of your choice that you can see within range."
+        }
+      ]
+    }
+  ]
+}
