@@ -2,9 +2,9 @@ spring:
   application:
     name: Dungeons & Dragon 5th Edition - Player's Handlebook
   datasource:
-    url: jdbc:oracle:thin:@${DB_HOST}:${DB_PORT}:${DB_NAME}
-    username: ${DATABASE_USER}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 10

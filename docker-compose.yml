@@ -20,40 +20,6 @@ services:
       timeout: 5s
       retries: 5
     restart: unless-stopped
-
-  # D&D 5E Core API Service
-  api:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: dnd5e-core-api
-    environment:
-      # Database Configuration
-      - POSTGRES_HOST=${DB_HOST:-postgres}
-      - POSTGRES_PORT=${DB_PORT:-5432}
-      - POSTGRES_DB=${DB_NAME}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
-
-      # Security Configuration
-      - SECURITY_USER=${SECURITY_USER:-admin}
-      - SECURITY_PASSWORD=${SECURITY_PASSWORD:-admin123}
-
-      # Application Configuration
-      - SERVER_PORT=8080
-      - BOOKSCHEMA_AUTO_IMPORT=${BOOKSCHEMA_AUTO_IMPORT:-true}
-
-      # Spring Profile
-      - SPRING_PROFILES_ACTIVE=${SPRING_PROFILES_ACTIVE:-dev}
-    ports:
-      - "${API_PORT:-8080}:8080"
-    depends_on:
-      postgres:
-        condition: service_healthy
-    networks:
-      - dnd5e-network
-    restart: unless-stopped
-
 # Networks
 networks:
   dnd5e-network:
