@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/5th-edition/players-handlebook/spells")
 class SaveSpellController(
-    private val SaveSpellUseCase: SaveSpellUseCase
+    private val saveSpellUseCase: SaveSpellUseCase
 ): BaseController() {
     companion object {
         val PATH: String = "/5th-edition/players-handlebook/spells"
     }
     @PostMapping()
     fun execute(@RequestBody request: CreateSpellRequest): ResponseEntity<SpellResponse> {
-        val spellCreated = SaveSpellUseCase.execute(request)
+        val spellCreated = saveSpellUseCase.execute(request)
         val uri = createURI(spellCreated.id, PATH)
         return ResponseEntity.created(uri).body(spellCreated.toResponse())
     }
