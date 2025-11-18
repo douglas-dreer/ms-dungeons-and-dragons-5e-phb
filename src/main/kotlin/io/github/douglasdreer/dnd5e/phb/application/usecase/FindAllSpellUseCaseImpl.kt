@@ -8,7 +8,7 @@ import io.github.douglasdreer.dnd5e.phb.intrastructure.mapper.toDomain
 import org.springframework.stereotype.Service
 
 @Service
-class FindAllSpellUseCase(
+class FindAllSpellUseCaseImpl(
     private val spellPort: SpellRepositoryPort
 ): FindAllSpellUseCase {
     override fun execute(page: Int, size: Int): Pagination<Spell> {

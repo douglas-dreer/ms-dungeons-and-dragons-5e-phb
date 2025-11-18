@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/5th-edition/players-handlebook/spells")
 class FindAllSpellController(
-    private val usecase: FindAllSpellUseCase
+    private val findAllSpellUseCase: FindAllSpellUseCase
 ) {
     @GetMapping(params = ["page", "size"])
     fun execute(
         @RequestParam("page", defaultValue = "0") page: Int,
         @RequestParam("size", defaultValue = "50") size: Int
     ): ResponseEntity<Pagination<SpellResponse>> {
-        val spellList = usecase.execute(page, size)
+        val spellList = findAllSpellUseCase.execute(page, size)
         return ResponseEntity.ok(spellList.toResponse(Spell::toResponse))
     }
 }
